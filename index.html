@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Thailand Countdown - Gordan Edition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="overlay">
+      <div class="content">
+        <div id="weather-comparison">
+            <div class="weather-box">Bremen: <span id="temp-bremen">--</span>°C</div>
+            <div class="weather-box highlight">Bangkok: <span id="temp-bangkok">--</span>°C</div>
+            <div id="weather-diff" class="diff-text">Lade Wetter-Daten...</div>
+        </div>
+
+        <div id="timer" class="countdown">–</div>
+        <div id="quote" class="quote">–</div>
+
+        <div class="discipline-container">
+            <p>Gordan ist seit <span id="cleanDays">0</span> Tagen trocken</p>
+            
+            <div class="savings-info">
+                Gesamt-Budget: <span id="totalEuro">0</span>€ 
+                <br>
+                <span class="baht-text">≈ <span id="totalBaht">0</span> THB</span>
+            </div>
+
+            <div class="finance-inputs">
+                <label>Start-Budget (€): 
+                    <input type="number" id="startBudget" placeholder="0">
+                </label>
+                <label>Verdienst/Tag (€): 
+                    <input type="number" id="dailyEarn" placeholder="0">
+                </label>
+            </div>
+
+            <button id="resetClean">Rückfall (Alk) 💀</button>
+        </div>
+
+        <br>
+        <div class="target-setting">
+            <label>Ziel-Datum: </label>
+            <input type="date" id="dateInput" class="date-input" />
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
