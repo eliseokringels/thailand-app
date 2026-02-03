@@ -1,52 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Thailand Countdown - Gordan Edition</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="overlay">
-      <div class="content">
-        <div id="weather-comparison">
-            <div class="weather-box">Bremen: <span id="temp-bremen">--</span>°C</div>
-            <div class="weather-box highlight">Bangkok: <span id="temp-bangkok">--</span>°C</div>
-            <div id="weather-diff" class="diff-text">Lade Wetter-Daten...</div>
-        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gordans Thailand</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <div class="app-container">
+        <header>
+            <h1>Gordan & ThaiBitches🏝️</h1>
+            <p id="quote">Lade Motivation...</p>
+        </header>
 
-        <div id="timer" class="countdown">–</div>
-        <div id="quote" class="quote">–</div>
-
-        <div class="discipline-container">
-            <p>Gordan ist seit <span id="cleanDays">0</span> Tagen trocken</p>
+        <section class="card glow-card">
+            <div id="timer" class="timer-text">Lade Countdown...</div>
+            <input type="date" id="dateInput">
             
-            <div class="savings-info">
-                Gesamt-Budget: <span id="totalEuro">0</span>€ 
-                <br>
-                <span class="baht-text">≈ <span id="totalBaht">0</span> THB</span>
+            <div class="weather-box">
+                <div class="weather-item">
+                    <span>Bremen Müll 🇩🇪</span>
+                    <span id="temp-bremen">--</span>°C
+                </div>
+                <div class="weather-item">
+                    <span>Bangkok GEIl 🇹🇭</span>
+                    <span id="temp-bangkok">--</span>°C
+                </div>
+            </div>
+        </section>
+
+        <div class="tracker-grid">
+            <div class="card stat-card glow-green">
+                <h3>Training</h3>
+                <div class="big-number" id="gymCountDisplay">0</div>
+                <button id="gymBtn" class="btn-success" style="margin-bottom: 8px;">Sport! LÖWE! 💪</button>
+                <button id="resetGym" class="btn-danger" style="font-size: 0.6rem; padding: 5px;">Fauler Schwanz 🔄</button>
             </div>
 
-            <div class="finance-inputs">
-                <label>Start-Budget (€): 
-                    <input type="number" id="startBudget" placeholder="0">
-                </label>
-                <label>Verdienst/Tag (€): 
-                    <input type="number" id="dailyEarn" placeholder="0">
-                </label>
+            <div class="card stat-card glow-red">
+                <h3>Nüchtern</h3>
+                <div class="big-number" id="cleanDaysDisplay">0</div>
+                <button id="cleanStayBtn" class="btn-success" style="margin-bottom: 8px;">HEUTE CHRIST! ✅</button>
+                <button id="resetClean" class="btn-danger">RÜCKFALL Valah Peinlich (-10€) 🍺</button>
             </div>
-
-            <button id="resetClean">Rückfall (Alk) 💀</button>
         </div>
 
-        <br>
-        <div class="target-setting">
-            <label>Ziel-Datum: </label>
-            <input type="date" id="dateInput" class="date-input" />
-        </div>
-      </div>
+        <section class="card finance-card glow-gold">
+            <h2>💰 Deine Patte </h2>
+            <div class="total-display">
+                <div class="euro-main"><span id="totalEuro">0</span> €</div>
+                <div class="baht-sub"><span id="totalBaht">0</span> Baht</div>
+                <div id="penaltyInfo" style="color: #ff4d4d; font-size: 0.8rem; margin-top: 5px; font-weight: bold; text-shadow: 0 0 5px rgba(255,0,0,0.5);"></div>
+            </div>
+            
+            <div class="finance-settings">
+                <div class="input-group">
+                    <label>Startgeld</label>
+                    <input type="number" id="startBudget" value="0">
+                </div>
+                <div class="input-group">
+                    <label>Tagessatz</label>
+                    <input type="number" id="dailyEarn" value="50">
+                </div>
+            </div>
+        </section>
     </div>
 
     <script src="app.js"></script>
-  </body>
+</body>
 </html>
