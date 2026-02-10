@@ -6,10 +6,16 @@
     <title>Gordans Thailand</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
+    <video playsinline muted autoplay loop id="bg-video">
+        <source src="bg_video.mp4" type="video/mp4">
+        Dein Browser unterstützt keine Videos.
+    </video>
+
     <div class="overlay"></div>
     
     <div class="app-container">
@@ -18,7 +24,7 @@
             <p id="quote">Lade Motivation...</p>
         </header>
 
-        <section class="card glow-card">
+        <section class="card glow-card timer-section">
             <div id="timer" class="timer-text">Lade Countdown...</div>
             <input type="date" id="dateInput">
             
@@ -27,6 +33,7 @@
                     <span>Bremen Müll 🇩🇪</span>
                     <span id="temp-bremen">--</span>°C
                 </div>
+                <div id="temp-diff" class="weather-diff-badge">...</div>
                 <div class="weather-item">
                     <span>Bangkok GEIl 🇹🇭</span>
                     <span id="temp-bangkok">--</span>°C
@@ -38,24 +45,24 @@
             <div class="card stat-card glow-green">
                 <h3>Training</h3>
                 <div class="big-number" id="gymCountDisplay">0</div>
-                <button id="gymBtn" class="btn-success" style="margin-bottom: 8px;">Sport! LÖWE! 💪</button>
-                <button id="resetGym" class="btn-danger" style="font-size: 0.6rem; padding: 5px;">Fauler Schwanz 🔄</button>
+                <button id="gymBtn" class="btn-success">Sport! LÖWE! 💪</button>
+                <button id="resetGym" class="btn-danger-small">Reset 🔄</button>
             </div>
 
             <div class="card stat-card glow-red">
                 <h3>Nüchtern</h3>
                 <div class="big-number" id="cleanDaysDisplay">0</div>
-                <button id="cleanStayBtn" class="btn-success" style="margin-bottom: 8px;">HEUTE CHRIST! ✅</button>
-                <button id="resetClean" class="btn-danger">RÜCKFALL Valah Peinlich (-10€) 🍺</button>
+                <button id="cleanStayBtn" class="btn-success">HEUTE CHRIST! ✅</button>
+                <button id="resetClean" class="btn-danger-small">Rückfall 🍺</button>
             </div>
         </div>
 
         <section class="card finance-card glow-gold">
-            <h2>💰 Deine Patte </h2>
+            <h2>💰 Deine Patte</h2>
             <div class="total-display">
                 <div class="euro-main"><span id="totalEuro">0</span> €</div>
                 <div class="baht-sub"><span id="totalBaht">0</span> Baht</div>
-                <div id="penaltyInfo" style="color: #ff4d4d; font-size: 0.8rem; margin-top: 5px; font-weight: bold; text-shadow: 0 0 5px rgba(255,0,0,0.5);"></div>
+                <div id="penaltyInfo" class="penalty-text"></div>
             </div>
             
             <div class="finance-settings">
@@ -74,3 +81,4 @@
     <script src="app.js"></script>
 </body>
 </html>
+
