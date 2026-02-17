@@ -10,93 +10,275 @@ body {
     overflow-x: hidden;
 }
 
-/* VIDEO HINTERGRUND */
 #bg-video {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -2;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    object-fit: cover; z-index: -2; pointer-events: none;
 }
 
 .overlay { 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100vw; 
-    height: 100vh; 
-    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%); 
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%); 
     z-index: -1; 
 }
 
-/* CONTAINER */
 .app-container { 
-    position: relative; 
-    z-index: 1; 
-    width: 100%; 
-    max-width: 450px; 
-    padding: 30px 15px; 
+    position: relative; z-index: 1; width: 100%; max-width: 450px; padding: 30px 15px; 
 }
 
-/* TYPOGRAFIE - KAUSHAN SCRIPT */
 header h1, #quote, .timer-text, h2, h3, .btn-success { 
     font-family: 'Kaushan Script', cursive; 
 }
 
-header h1 { font-size: 2.2rem; text-align: center; text-shadow: 2px 2px 8px #000; margin-bottom: 5px; }
-#quote { text-align: center; font-size: 1.3rem; color: #ffeb3b; text-shadow: 2px 2px 5px #000; margin-bottom: 20px; min-height: 3em; line-height: 1.2; }
+header h1 { font-size: 2.2rem; text-align: center; text-shadow: 2px 2px 8px #000; margin-bottom: 5px; color: #22c55e; }
+#quote { text-align: center; font-size: 1.3rem; color: #eab308; text-shadow: 2px 2px 5px #000; margin-bottom: 20px; min-height: 3em; }
 
-/* TIMER */
-.timer-section { text-align: center; display: flex; flex-direction: column; align-items: center; }
-.timer-text { font-size: 2.2rem; margin-bottom: 5px; text-shadow: 2px 2px 10px #000; }
-#dateInput { background: transparent; border: none; color: rgba(255,255,255,0.4); text-align: center; font-size: 0.8rem; cursor: pointer; }
-
-/* CARDS */
 .card { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 20px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1); }
 .tracker-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.stat-card { text-align: center; }
+
+.glow-green { border-color: #22c55e99; box-shadow: 0 0 20px rgba(34,197,94,0.3); }
+.glow-blue { border-color: #3b82f699; box-shadow: 0 0 20px rgba(59,130,246,0.3); }
+.glow-gold { border-color: #eab30899; box-shadow: 0 0 20px rgba(234,179,8,0.3); }
+
 .big-number { font-size: 3rem; font-weight: 900; margin: 5px 0; font-family: 'Arial Black', sans-serif; }
 
-.glow-green { border-color: #22c55e66; box-shadow: 0 0 20px rgba(34,197,94,0.2); }
-.glow-red { border-color: #ef444466; box-shadow: 0 0 20px rgba(239,68,68,0.2); }
-.glow-gold { border-color: #eab30866; box-shadow: 0 0 20px rgba(234,179,8,0.2); }
-
-/* BUTTONS */
 .btn-success { background: #22c55e; color: white; border: none; padding: 12px; border-radius: 12px; width: 100%; font-size: 1.1rem; cursor: pointer; margin-bottom: 8px; box-shadow: 0 4px 0 #166534; }
 .btn-success:active { transform: translateY(2px); box-shadow: 0 2px 0 #166534; }
-.btn-danger-small { background: rgba(239,68,68,0.2); color: #ef4444; border: 1px solid #ef4444; padding: 4px; border-radius: 8px; width: 60%; font-size: 0.65rem; cursor: pointer; }
+.btn-danger-small { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 4px; border-radius: 8px; width: 60%; font-size: 0.65rem; cursor: pointer; }
 
-/* FINANZEN */
 .euro-main { font-size: 3.2rem; font-weight: 900; color: #4ade80; text-align: center; }
-.baht-sub { font-size: 1.1rem; text-align: center; opacity: 0.7; margin-bottom: 10px; }
-.penalty-text { color: #ff4d4d; font-size: 0.8rem; text-align: center; font-weight: bold; }
-.finance-settings { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; }
-.finance-settings label { font-size: 0.7rem; opacity: 0.6; display: block; margin-bottom: 3px; }
-input[type="number"] { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px; border-radius: 8px; width: 100%; text-align: center; }
+.baht-sub { font-size: 1.1rem; text-align: center; opacity: 0.8; color: #eab308; margin-bottom: 10px; }
 
-/* WETTER */
-.weather-box { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; width: 100%; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 15px; }
-.weather-item { display: flex; flex-direction: column; }
-.weather-item span:first-child { font-size: 0.6rem; opacity: 0.6; text-transform: uppercase; }
-.weather-item span:last-child { font-size: 1.3rem; font-weight: bold; color: #ffeb3b; }
-.weather-diff-badge { background: #ffeb3b; color: #000; padding: 2px 6px; border-radius: 6px; font-size: 0.7rem; font-weight: 900; }
-* {
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-}
-input { user-select: auto; } /* Eingabefelder müssen bedienbar bleiben */
+.weather-box { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 15px; }
+.weather-diff-badge { background: #3b82f6; color: #fff; padding: 2px 6px; border-radius: 6px; font-size: 0.7rem; font-weight: 900; }
 
-/* VIDEO HINTERGRUND FINAL FIX */
-#bg-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;    /* 100% der Bildschirmbreite */
-    height: 100vh;   /* 100% der Bildschirmhöhe */
-    z-index: -2;
-    object-fit: cover; /* WICHTIG: Das schneidet das Video so zu, dass es den Screen füllt ohne zu verzerren */
-    pointer-events: none; /* Verhindert, dass man das Video aus Versehen anklickt */
+* { -webkit-tap-highlight-color: transparent; user-select: none; }
+input { user-select: auto; }
+/* ... Rest wie vorher ... */
+
+/* WETTER BOX - MEHR PLATZ & PROFESSIONELLER */
+.weather-box { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-top: 15px; 
+    width: 100%; 
+    padding: 15px; 
+    background: rgba(0,0,0,0.3); 
+    border-radius: 18px; 
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
+.weather-item { display: flex; flex-direction: column; flex: 1; }
+.weather-item:last-child { text-align: right; }
+
+.weather-diff-badge { 
+    background: #3b82f6; 
+    color: white; 
+    padding: 6px 12px; 
+    border-radius: 10px; 
+    font-size: 0.75rem; 
+    font-weight: 800; 
+    box-shadow: 0 0 15px rgba(59,130,246,0.4);
+    margin: 0 10px;
+    white-space: nowrap;
+}
+
+/* FINANZ BEREICH - PREMIUM LOOK */
+.finance-card {
+    padding-bottom: 25px;
+}
+
+.total-display {
+    margin-bottom: 20px;
+}
+
+.finance-settings { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; 
+    margin-top: 20px; 
+    padding: 15px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 15px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group label { 
+    font-size: 0.65rem; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.5; 
+    color: #eab308;
+}
+
+input[type="number"] { 
+    background: rgba(255,255,255,0.05); 
+    border: 1px solid rgba(255,255,255,0.1); 
+    color: white; 
+    padding: 10px; 
+    border-radius: 10px; 
+    width: 100%; 
+    text-align: center; 
+    font-size: 1rem;
+    font-weight: bold;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="number"]:focus {
+    background: rgba(255,255,255,0.1);
+    border-color: #eab308;
+    box-shadow: 0 0 10px rgba(234,179,8,0.2);
+}
+
+/* Chrome, Safari, Edge, Opera: Entfernt die hässlichen Pfeile */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.timer-text {
+    font-size: 2.8rem; /* Größer für mehr Impact */
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+}
+
+#dateInput {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 5px 10px;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: sans-serif; /* Cleaner als die Script-Font für Daten */
+}
+.btn-link-training {
+    display: block;
+    text-decoration: none;
+    background: rgba(34, 197, 94, 0.1); /* Subtiles Grün */
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    margin: 10px 0;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-link-training:hover {
+    background: rgba(34, 197, 94, 0.2);
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+    transform: translateY(-2px);
+}
+/* TIMER SEKTION - ZENTRIERT */
+.timer-section { 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; /* Zentriert die Items horizontal */
+    justify-content: center; /* Zentriert den Inhalt vertikal, falls nötig */
+    width: 100%;
+}
+
+.timer-text { 
+    font-size: 2.8rem; 
+    font-weight: 900; 
+    color: #fff; 
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.6); 
+    letter-spacing: -1px; 
+    margin-bottom: 10px; 
+    width: 100%; /* Stellt sicher, dass der Text den Platz nutzt */
+    text-align: center; /* Zentriert den Text selbst */
+}
+
+/* Falls das Datum-Input noch verschoben ist */
+#dateInput {
+    display: block;
+    margin: 0 auto; /* Zentriert das Input-Feld im Container */
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 5px 10px;
+    color: rgba(255, 255, 255, 0.4);
+}
+/* MOBILE CONTAINER OPTIMIERUNG */
+.app-container {
+    width: 100%;
+    max-width: 450px; /* Begrenzung für sehr große Handys */
+    padding: env(safe-area-inset-top) 15px 80px 15px; /* Platz für Notch und unten */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* TIMER - HANDY ZENTRIERT */
+.timer-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Zentriert alles horizontal */
+    justify-content: center;
+    text-align: center;
+    padding: 25px 10px;
+}
+
+.timer-text {
+    font-size: clamp(2rem, 10vw, 3rem); /* Schriftgröße passt sich dem Display an */
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+    margin-bottom: 10px;
+    width: 100%;
+    letter-spacing: -1px;
+}
+
+/* INPUTS FÜR DEN DAUMEN */
+#dateInput {
+    display: block;
+    width: 80%; /* Breit genug zum Tippen */
+    max-width: 250px;
+    margin: 10px auto;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 12px; /* Größeres Tipp-Feld */
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    -webkit-appearance: none; /* Entfernt Standard-iOS-Styling */
+}
+
+/* TRAININGSPLAN BUTTON - FULL WIDTH TOUCH */
+.btn-link-training {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1));
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    padding: 15px; /* Große Klickfläche */
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 15px 0;
+    width: 100%; /* Volle Breite der Card */
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Aktives Feedback beim Tippen (statt Hover) */
+.btn-link-training:active {
+    transform: scale(0.98);
+    background: rgba(34, 197, 94, 0.3);
+}
